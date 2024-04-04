@@ -4,6 +4,7 @@ const db = require('../database/connection');
 module.exports = {
     async listarProdutos(request, response) {
         try {
+            
             // throw new Error('Eu causei o erro!');
             return response.status(200).json({
                 sucesso: true, 
