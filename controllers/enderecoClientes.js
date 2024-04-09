@@ -35,6 +35,14 @@ module.exports = {
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
         // definição dos dados a serem inseridos em um array
 
+        const values = [end_id, usu_id, end_logradouro, end_num, end_bairro, end_complemento, end_principal,cid_id];
+
+
+        const execSql = await db.query(sql, values);
+            // identificação do ID do registro inserido
+            
+        const nItens = Endereços [0].length;         
+
         
 
             return response.status(200).json({
