@@ -4,6 +4,13 @@ const db = require('../database/connection');
 module.exports = {
     async listarEnderecoClientes(request, response) {
         try {
+            const sql = `SELECT 
+            end_id, usu_id, end_logradouro, end_num, end_bairro, 
+            end_complemento, end_pincipal, cid_id = 1 AS usu_id  
+            FROM  Endereços 
+            WHERE usu_ativo = 1;`;
+
+
             return response.status(200).json({
                 sucesso: true, 
                 mensagem: 'Lista de endereço de cliente.', 
@@ -19,6 +26,17 @@ module.exports = {
     }, 
     async cadastrarEnderecoClientes(request, response) {
         try {
+
+             // parâmetros recebidos no corpo da requisição
+             const { end_id, usu_id, end_logradouro, end_num, end_bairro, end_complemento, end_principal, cid_id } = request.body;
+
+            const sql = `INSERT INTO usuarios 
+            (end_id, usu_id, end_logradouro, end_num, end_bairro, end_complemento, end_principal, cid_id) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+        // definição dos dados a serem inseridos em um array
+
+        
+
             return response.status(200).json({
                 sucesso: true, 
                 mensagem: 'Cadastro de endereço de cliente.', 
